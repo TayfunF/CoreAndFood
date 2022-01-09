@@ -1,0 +1,43 @@
+﻿@model CoreAndFood.Data.Models.Food
+
+@{
+    ViewData["Title"] = "FoodGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<small>FoodGet Pages</small>
+
+<br />
+<br />
+<br />
+@* İlk parametre kullanacağımız category 'nin acton kısmı *@
+@* İkinci Controller ismi *@
+@* Üçüncü parametre de bu form ne zaman çalışacak *@
+
+@using (Html.BeginForm("FoodUpdate", "Food", FormMethod.Post))
+{
+    @Html.Label("Food ID")
+    @Html.TextBoxFor(x => x.FoodID, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.Label("Food Name")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Stock")
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    @Html.Label("Price")
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+    @Html.Label("Image URL")
+    @Html.TextBoxFor(x => x.ImageURL, new { @class = "form-control" })
+    <br />
+    @Html.Label("Category")
+    @Html.DropDownListFor(x => x.CategoryID, new SelectList(ViewBag.newFood2, "CategoryID", "CategoryName"), "Please Select Category", new { @class = "form-control" })
+    <br />
+    @Html.Label("Description")
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Save</button>
+    <a href="/Food/Index" class="btn btn-warning">Return Back</a>
+}

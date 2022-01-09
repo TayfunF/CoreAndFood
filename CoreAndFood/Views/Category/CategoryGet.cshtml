@@ -1,0 +1,29 @@
+﻿@model CoreAndFood.Data.Models.Category
+
+@{
+    ViewData["Title"] = "CategoryGet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<small class="text-muted">CategoryGet Pages</small>
+<br />
+<br />
+<br />
+@* İlk parametre kullanacağımız category 'nin acton kısmı *@
+@* İkinci Controller ismi *@
+@* Üçüncü parametre de bu form ne zaman çalışacak *@
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.CategoryID)
+    @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" ,@readonly="true" })
+    <br />
+    @Html.LabelFor(x => x.CategoryName)
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.CategoryDescription)
+    @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Update</button>
+    <a href="/Category/Index" class="btn btn-warning">Return Back</a>
+}

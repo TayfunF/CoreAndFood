@@ -1,0 +1,39 @@
+﻿@model CoreAndFood.Data.Models.Food
+
+@{
+    ViewData["Title"] = "FoodAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<small>Food Add Pages</small>
+
+<br />
+<br />
+<br />
+@* İlk parametre kullanacağımız category 'nin acton kısmı *@
+@* İkinci Controller ismi *@
+@* Üçüncü parametre de bu form ne zaman çalışacak *@
+@using (Html.BeginForm("FoodAdd", "Food", FormMethod.Post))
+{
+    @Html.Label("Food Name")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Stock")
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Price")
+    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+    <br />
+    @Html.Label("Image URL")
+    @Html.TextBoxFor(x => x.ImageURL, new { @class = "form-control" })
+    <br />
+    @Html.Label("Category")
+    @Html.DropDownListFor(x => x.CategoryID, new SelectList(ViewBag.newFood, "CategoryID", "CategoryName"), "Please Select Category", new { @class = "form-control" })
+    <br />
+    @Html.Label("Description")
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Save</button>
+    <a href="/Food/Index" class="btn btn-warning">Return Back</a>
+}

@@ -1,0 +1,27 @@
+﻿@model CoreAndFood.Data.Models.Category
+
+@{
+    ViewData["Title"] = "CategoryAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<small>CategoryAdd Pages</small>
+<br />
+<br />
+<br />
+@* İlk parametre kullanacağımız category 'nin acton kısmı *@
+@* İkinci Controller ismi *@
+@* Üçüncü parametre de bu form ne zaman çalışacak *@
+@using (Html.BeginForm("CategoryAdd", "Category", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.CategoryName)
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+    <br />
+    @Html.LabelFor(x => x.CategoryDescription)
+    @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Save</button>
+    <a href="/Category/Index" class="btn btn-warning">Return Back</a>
+}
+
