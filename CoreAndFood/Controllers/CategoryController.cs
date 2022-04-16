@@ -10,7 +10,7 @@ using X.PagedList;
 
 namespace CoreAndFood.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : Controller 
     {
         //Context & CONSTRUCTOR & CategoryRepository SUBJECT TANIMLAMA
         private readonly Context _context;
